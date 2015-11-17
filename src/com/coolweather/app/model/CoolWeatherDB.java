@@ -62,7 +62,7 @@ public class CoolWeatherDB {
 	public void saveCity(City city) {
 		ContentValues values = new ContentValues();
 		values.put("id", city.getId());
-		values.put("city_code", city.getcityCode());
+		values.put("city_code", city.getCityCode());
 		values.put("city_name", city.getCityName());
 		values.put("province_id", city.getProvinceId());
 		db.insert("City", null, values);

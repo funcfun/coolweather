@@ -26,7 +26,7 @@ public class City {
 		this.cityCode = cityCode;
 	}
 	
-	public String getcityCode() {
+	public String getCityCode() {
 		return cityCode;
 	}
 	
