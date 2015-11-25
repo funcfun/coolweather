@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 //import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,8 +31,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	private TextView temp1Text;
 	private TextView temp2Text;
 	private TextView currentDateText;
-	//private Button switchCity;
-	//private Button refreshWeather;
+	private Button switchCity;
+	private Button refreshWeather;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,11 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		temp1Text = (TextView) findViewById(R.id.temp1);
 		temp2Text = (TextView) findViewById(R.id.temp2);
 		currentDateText = (TextView) findViewById(R.id.current_date);
-		//switchCity = (Button) findViewById(R.id.switch_city);
-		//refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		switchCity = (Button) findViewById(R.id.switch_city);
+		refreshWeather = (Button) findViewById(R.id.refresh_weather);
 		String countyCode = getIntent().getStringExtra("county_code");
+		switchCity.setOnClickListener(this);
+		refreshWeather.setOnClickListener(this);
 		if(!TextUtils.isEmpty(countyCode)) {
 			publishText.setText("Í¬²½ÖÐ...");
 			weatherInfoLayout.setVisibility(View.INVISIBLE);
@@ -56,14 +59,12 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		} else {
 			showWeather();
 		}
-		//switchCity.setOnClickListener(this);
-		//refreshWeather.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View view) {
 		switch(view.getId()) {
-/*		case R.id.switch_city:
+		case R.id.switch_city:
 			Intent intent = new Intent(this, ChooseAreaActivity.class);
 			intent.putExtra("from_weather_activity", true);
 			startActivity(intent);
@@ -77,7 +78,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			if(!TextUtils.isEmpty(weatherCode)) {
 				queryWeatherInfo(weatherCode);
 			}
-			break;					*/
+			break;					
 		default:
 			break;
 		}
